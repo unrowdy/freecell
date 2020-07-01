@@ -25,7 +25,8 @@ svg {
   width: 107px;
   height: 144px;
   position: absolute;
-  transition: top 0.2s, left 0.2s;
+  transition-property: top, left;
+  transition-duration: 100ms;
   transition-timing-function: ease-in-out;
   pointer-events: none;
 }
