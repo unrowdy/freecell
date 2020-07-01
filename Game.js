@@ -1,3 +1,12 @@
+
+import Deck from './Deck.js';
+import {createElement} from './element.js';
+import gps from './gps.js';
+import Card from './Card.js';
+import move from './move.js';
+
+export var thegame = null;
+
 function Game(number) {
   this.board = {
     cells: [[], [], [], []],
@@ -57,5 +66,7 @@ function Game(number) {
       }
     }
   }
-
+  thegame = this;
 }
+
+export default Game;

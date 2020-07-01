@@ -1,4 +1,4 @@
-function createSVGElement(type, data) {
+export function createSVGElement(type, data) {
   var element = document.createElementNS("http://www.w3.org/2000/svg", type);
   if (data) {
     if(data.parent) {
@@ -14,7 +14,7 @@ function createSVGElement(type, data) {
   return element;
 }
 
-function createElement(type, data) {
+export function createElement(type, data) {
   var element = document.createElement(type);
   if (data) {
     if(data.parent) {

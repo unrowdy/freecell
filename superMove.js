@@ -1,4 +1,7 @@
-function superMove(source, target) { // test with #28269
+
+import {thegame} from './Game.js';
+
+export default function superMove(source, target) { // test with #28269
   var targetType = target.region;
   var targetArr = thegame.board[target.region][target.zone];
   var sourceArr = thegame.board[source.region][source.zone];

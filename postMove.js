@@ -1,3 +1,8 @@
+
+import {thegame} from './Game.js';
+import gps from './gps.js';
+import {speed, queue, process} from './queue.js';
+
 function findNext(current) { // test with #4061 or #6095
   var found = null;
   var safe = 0;
@@ -60,7 +65,7 @@ function findNext(current) { // test with #4061 or #6095
   };
 }
 
-function postMove() {
+export default function postMove() {
   var done = true;
   for (var i = 0; i < thegame.board.stacks.length; i++) {
     var stack = thegame.board.stacks[i];

@@ -1,4 +1,5 @@
-var thegame = null;
+
+import Game from './Game.js';
 
 function getHash() {
   var hash = null;
@@ -13,7 +14,7 @@ function getHash() {
   
   if(hash) {
     //start a game
-    thegame = new Game(hash);
+    new Game(hash);
   } else {
     location.hash = Math.floor(Math.random() *  32000);
   }

@@ -1,30 +1,6 @@
-var suits = [{
-  id: 'C',
-  color: 'black',
-  snippet: '<circle cx="46" cy="22" r="21" />\
-    <circle cx="22" cy="58" r="21" />\
-    <circle cx="70" cy="58" r="21" />\
-    <circle cx="46" cy="50" r="16" />\
-    <polygon points="46,50 56,92 36,92" />'
-}, {
-  id: 'D',
-  color: 'red',
-  snippet: '<polygon points="46,0 84,46 46,92 8,46" />'
-}, {
-  id: 'H',
-  color: 'red',
-  snippet: '<ellipse cx="25" cy="28" rx="24" ry="27" />\
-    <ellipse cx="67" cy="28" rx="24" ry="27" />\
-    <polygon points="46,28 86,45 46,92 6,45" />'
-}, {
-  id: 'S',
-  color: 'black',
-  snippet: '<polygon points="46,0 86,44 46,50 6,44" />\
-    <circle cx="22" cy="58" r="21" />\
-    <circle cx="70" cy="58" r="21" />\
-    <circle cx="46" cy="50" r="16" />\
-    <polygon points="46,50 56,92 36,92" />'
-}];
+import ranks from './ranks.js';
+import suits from './suits.js';
+import {createSVGElement} from './element.js';
 
 // could make these calculations
 var positions = {
@@ -51,61 +27,6 @@ var positions = {
   'S': { href: '#rank', x: '356', y: '464', transform: 'rotate(180, 386, 506)' }, // bottomRightRank
   'V': {} // face border?
 };
-
-var ranks = [{
-  id: 'A',
-  positions: ['A', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M8 66L28 6h4l20 60M16 46h28M0 66h20m20 0h20" />'
-}, {
-  id: '2',
-  positions: ['B', 'C', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M14 20v-4A10 10 0 0124 6h12a10 10 0 0110 10v6L14 54v12h32V48" />'
-}, {
-  id: '3',
-  positions: ['A', 'B', 'C', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M14 16V6h32v2L22 32v2h14a10 10 0 0110 10v12a10 10 0 01-10 10H24a10 10 0 01-10-10v-4" />'
-}, {
-  id: '4',
-  positions: ['D', 'E', 'F', 'G', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M42 66V6h-2L10 36v6h46M32 66h20" />'
-}, {
-  id: '5',
-  positions: ['A', 'D', 'E', 'F', 'G', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M48 6H14v24h22a10 10 0 0110 10v16a10 10 0 01-10 10H24a10 10 0 01-10-10v-8" />'
-}, {
-  id: '6',
-  positions: ['D', 'E', 'F', 'G', 'H', 'I', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M44 6H32a18 18 0 00-18 18v32a10 10 0 0010 10h12a10 10 0 0010-10V40a10 10 0 00-10-10H24a10 10 0 00-10 10v4" />'
-}, {
-  id: '7',
-  positions: ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M14 16V6h32v4a140 140 0 00-20 50v12" />'
-}, {
-  id: '8',
-  positions: ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M36 6H24a10 10 0 00-10 10v8a10 10 0 0010 10h12a10 10 0 0110 10v12a10 10 0 01-10 10H24a10 10 0 01-10-10V44a10 10 0 0110-10h12a10 10 0 0010-10v-8A10 10 0 0036 6h-4" />'
-}, {
-  id: '9',
-  positions: ['A', 'D', 'E', 'F', 'G', 'L', 'M', 'N', 'O', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M46 32V16A10 10 0 0036 6H24a10 10 0 00-10 10v16a10 10 0 0010 10h12a10 10 0 0010-10v-4 20a18 18 0 01-18 18H16" />'
-}, {
-  id: 'T',
-  positions: ['D', 'E', 'F', 'G', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'],
-  snippet: '<path d="M10 0v72m40-52v-4A10 10 0 0040 6h-4a10 10 0 00-10 10v40a10 10 0 0010 10h4a10 10 0 0010-10V16" />'
-}, {
-  id: 'J',
-  positions: ['R', 'S', 'T', 'U'],
-  snippet: '<path d="M42 6v50a10 10 0 01-10 10h-4a10 10 0 01-10-10v-8M32 6h20" />'
-}, {
-  id: 'Q',
-  positions: ['R', 'S', 'T', 'U'],
-  snippet: '<path d="M46 20v-4A10 10 0 0036 6H24a10 10 0 00-10 10v40a10 10 0 0010 10h12a10 10 0 0010-10V16M34 66a12 12 0 0012 12h6" />'
-}, {
-  id: 'K',
-  positions: ['R', 'S', 'T', 'U'],
-  snippet: '<path d="M14 6v60M50 6v2L14 44v2m8-10l28 28v2M4 6h20m12 0h20M4 66h20m12 0h20" />'
-}];
-
 
 function makeSvg(rank, suit) {
   var rankref = 'r' + ranks[rank].id;
@@ -223,3 +144,5 @@ function Card(rank, suit) {
 // need to cleanup defs
 // also so far you are not using the actual card for anything
 // just dropping svg in dom
+
+export default Card;

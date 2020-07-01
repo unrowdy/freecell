@@ -1,3 +1,10 @@
+
+import {thegame} from './Game.js';
+import superMove from './superMove.js';
+import gps from './gps.js';
+import {speed, queue} from './queue.js';
+import postMove from './postMove.js';
+
 var move = {
   source: null,
   target: null,
@@ -87,3 +94,5 @@ var move = {
     }
   }
 }
+
+export default move;

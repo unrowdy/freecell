@@ -1,8 +1,8 @@
-var queue = [];
+export var queue = [];
 var delay = 0;
 var timer = new Date();
 
-function process() {
+export function process() {
   var now = new Date();
   if(now - timer < delay) {
     window.requestAnimationFrame(process);
@@ -26,7 +26,7 @@ function process() {
   }
 }
 
-function speed(ax, ay, bx, by) {
+export function speed(ax, ay, bx, by) {
   var a = Math.abs(parseInt(ax) - parseInt(bx));
   var b = Math.abs(parseInt(ay) - parseInt(by));
   var c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));

@@ -42,3 +42,5 @@ function gps(address) {
     zIndex: z
   }
 }
+
+export default gps;

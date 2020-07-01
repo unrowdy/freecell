@@ -1,3 +1,6 @@
+import ranks from './ranks.js';
+import suits from './suits.js';
+
 function Deck() {
   this.cards = [];
   for(var i = 0; i < ranks.length; i++) {
@@ -23,3 +26,5 @@ function Deck() {
     this.cards.reverse();
   }
 }
+
+export default Deck;
