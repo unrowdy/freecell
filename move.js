@@ -63,19 +63,18 @@ var move = {
         zone: this.target.zone,
         number: targetArea.length
       });
+
       var ay = document.getElementById(this.selected).style.top;
       var ax = document.getElementById(this.selected).style.left;
-      var a = Math.abs(parseInt(ax) - parseInt(newPosition.left));
-      var b = Math.abs(parseInt(ay) - parseInt(newPosition.top));
-      var c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-      var t = Math.round(c / 6) + 'ms';
-      //console.log(t);
+      var t = speed(ax, ay, newPosition.left, newPosition.top);
 
-      document.getElementById(this.selected).style.transitionDuration = t;
-
-      document.getElementById(this.selected).style.top = newPosition.top;
-      document.getElementById(this.selected).style.left = newPosition.left;
-      document.getElementById(this.selected).style.zIndex = newPosition.zIndex;
+      queue.push({
+        id: this.selected,
+        x: newPosition.left,
+        y: newPosition.top,
+        z: newPosition.zIndex,
+        t: t
+      });
       
       targetArea.push(sourceArea.pop());
     }
@@ -84,7 +83,7 @@ var move = {
     
     // had to be after reset
     if(valid) {
-      setTimeout(postMove, 100);
+      postMove();
     }
   }
 }
