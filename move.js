@@ -3,7 +3,7 @@ import {thegame} from './Game.js';
 import superMove from './superMove.js';
 import gps from './gps.js';
 import {speed, queue} from './queue.js';
-import postMove from './postMove.js';
+import postMove, {localMove} from './postMove.js';
 
 var move = {
   source: null,
@@ -91,6 +91,23 @@ var move = {
     // had to be after reset
     if(valid) {
       postMove();
+    }
+  },
+  free: function(address) {
+    for (var i = 0; i < thegame.board.cells.length; i++) {
+      if (thegame.board.cells[i].length === 0) {
+        var target = {
+          region: 'cells',
+          zone: i
+        };
+        var area = thegame.board[address.region][address.zone];
+        address.id = area[area.length - 1].id;
+
+        localMove(address, target);
+        postMove();
+
+        break;
+      }
     }
   }
 }

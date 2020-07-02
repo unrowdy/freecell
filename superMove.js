@@ -11,6 +11,7 @@ export default function superMove(source, target) { // test with #28269
 
 
   if (targetType === 'stacks') {
+    var suit, rank;
     if (targetArr.length === 0) {
       suit = sourceArr[i].suit
       rank = -1
@@ -66,7 +67,8 @@ export default function superMove(source, target) { // test with #28269
 
   }
 
-  console.log(msg);
+  // for testing
+  // console.log(msg);
 
 }
 

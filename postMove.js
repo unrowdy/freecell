@@ -84,7 +84,7 @@ export default function postMove() {
 }
 
 
-function localMove(source, target) {
+export function localMove(source, target) {
   var sourceArea = thegame.board[source.region][source.zone];
   var targetArea = thegame.board[target.region][target.zone];
 

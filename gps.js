@@ -9,24 +9,25 @@ function gps(address) {
   var y = 0;
   var z = 0;
   
+  y += margin;
+  
   switch (address.region) {
     case 'cells':
-      x += margin;
-      y += margin;
+      x += address.zone * (width + margin / 2);
       break;
     case 'stacks':
-      x += margin + ((width + margin) * 4);
-      y += margin;
+      x += ((width + margin) * 4);
+      x += (margin - (margin / 2)) * 3;
+      x += address.zone * (width + margin / 2);
       break;
     case 'columns':
-      x += margin;
-      y += margin + height + margin;
+      x += address.zone * (width + margin);
+      y += height + margin;
       break;
   }
   
   // return height width, also for full zones
   
-  x += address.zone * (width + margin);
   
   if(address.number && address.region !==  'stacks') {
     y += address.number * reveal;

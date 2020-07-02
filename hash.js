@@ -15,6 +15,7 @@ function getHash() {
   if(hash) {
     //start a game
     new Game(hash);
+    document.title = 'FreeCell Game #' + hash;
   } else {
     location.hash = Math.floor(Math.random() *  32000);
   }

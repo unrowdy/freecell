@@ -48,6 +48,13 @@ function Game(number) {
         });
       });
 
+      elem.addEventListener('dblclick', function() {
+        move.free({
+          region: this.getAttribute('data-region'),
+          zone: parseInt(this.getAttribute('data-zone'))
+        });
+      });
+
       for (var number in this.board[region][zone]) {
         var thecard = this.board[region][zone][number];
         var position = gps({
