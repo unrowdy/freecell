@@ -1,9 +1,11 @@
 # freecell
 
-`python -m SimpleHTTPServer` (or `python3 -m http.server`)
+`npm install`
 
-http://localhost:8000/
+`npm run serve` locally
 
-* finish supermove
+# to do
+
 * local storage
+* finish supermove
 * cleanup
