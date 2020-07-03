@@ -3,13 +3,14 @@
   "scripts": {
     "lint": "jshint src/",
     "clean": "js-beautify -r src/*.js",
-    "build": "rollup src/hash.js --file dist/bundle.js --format cjs",
-    "serve": "http-server"
+    "build": "rollup -c",
+    "serve": "http-server dist"
   },
   "devDependencies": {
     "http-server": "^0.12.3",
     "js-beautify": "^1.11.0",
     "jshint": "^2.11.1",
-    "rollup": "^2.18.2"
+    "rollup": "^2.18.2",
+    "rollup-plugin-copy": "^3.3.0"
   }
 }
