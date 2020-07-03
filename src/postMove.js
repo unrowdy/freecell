@@ -1,12 +1,11 @@
-
-import {thegame} from './Game.js';
+import { thegame } from './Game.js';
 import gps from './gps.js';
-import {speed, queue, process} from './queue.js';
+import { speed, queue, process } from './queue.js';
 
 function findNext(current) { // test with #4061 or #6095
   var found = null;
   var safe = 0;
-  
+
   for (var i = 0; i < thegame.board.cells.length; i++) {
     var f = thegame.board.cells[i];
     if (f.length) {
@@ -27,7 +26,7 @@ function findNext(current) { // test with #4061 or #6095
       }
     }
   }
-  
+
   for (var j = 0; j < thegame.board.columns.length; j++) {
     var c = thegame.board.columns[j];
     if (c.length) {
@@ -48,7 +47,7 @@ function findNext(current) { // test with #4061 or #6095
       }
     }
   }
-  
+
   if (!current || current.rank === 0) {
     safe = 2;
   } else {
@@ -71,18 +70,17 @@ export default function postMove() {
     var stack = thegame.board.stacks[i];
     var res = findNext(stack[stack.length - 1] || null);
     if (res.found && res.safe) {
-      localMove(res.found, {region: 'stacks', zone: i});
+      localMove(res.found, { region: 'stacks', zone: i });
       done = false;
       break;
     }
   }
-  if(!done) {
+  if (!done) {
     postMove();
   } else {
     process();
   }
 }
-
 
 export function localMove(source, target) {
   var sourceArea = thegame.board[source.region][source.zone];

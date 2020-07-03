@@ -8,9 +8,9 @@ function gps(address) {
   var x = 0;
   var y = 0;
   var z = 0;
-  
+
   y += margin;
-  
+
   switch (address.region) {
     case 'cells':
       x += address.zone * (width + margin / 2);
@@ -25,18 +25,17 @@ function gps(address) {
       y += height + margin;
       break;
   }
-  
+
   // return height width, also for full zones
-  
-  
-  if(address.number && address.region !==  'stacks') {
+
+  if (address.number && address.region !== 'stacks') {
     y += address.number * reveal;
   }
 
   // maybe not always, applies to backgrounds too
   z = globalZ.toString();
   globalZ += 1;
-  
+
   return {
     top: y + 'px',
     left: x + 'px',

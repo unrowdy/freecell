@@ -1,26 +1,26 @@
 import ranks from './ranks.js';
 import suits from './suits.js';
-import {createSVGElement} from './element.js';
+import { createSVGElement } from './element.js';
 
 // could make these calculations
 var positions = {
-  'R': { href: '#rank', x: '12',  y: '24' }, // topLeftRank
-  'T': { href: '#suit', x: '12',  y: '112', width: '60', height: '60', }, // topLeftSuit
-  'D': { href: '#suit', x: '92',  y: '60'  }, // topLeft
-  'B': { href: '#suit', x: '168', y: '60'  }, // topCenter
-  'E': { href: '#suit', x: '244', y: '60'  }, // topRight
+  'R': { href: '#rank', x: '12', y: '24' }, // topLeftRank
+  'T': { href: '#suit', x: '12', y: '112', width: '60', height: '60', }, // topLeftSuit
+  'D': { href: '#suit', x: '92', y: '60' }, // topLeft
+  'B': { href: '#suit', x: '168', y: '60' }, // topCenter
+  'E': { href: '#suit', x: '244', y: '60' }, // topRight
   'P': { href: '#suit', x: '168', y: '120' }, // oneSixthCenter
   'J': { href: '#suit', x: '168', y: '150' }, // oneQuarterCenter
-  'L': { href: '#suit', x: '92',  y: '180' }, // oneThirdLeft
+  'L': { href: '#suit', x: '92', y: '180' }, // oneThirdLeft
   'M': { href: '#suit', x: '244', y: '180' }, // oneThirdRight
-  'H': { href: '#suit', x: '92',  y: '240' }, // oneHalfLeft
+  'H': { href: '#suit', x: '92', y: '240' }, // oneHalfLeft
   'A': { href: '#suit', x: '168', y: '240' }, // oneHalfCenter
   'I': { href: '#suit', x: '244', y: '240' }, // oneHalfRight
-  'N': { href: '#suit', x: '92',  y: '300', transform: 'rotate(180, 138, 346)' }, // twoThirdLeft
+  'N': { href: '#suit', x: '92', y: '300', transform: 'rotate(180, 138, 346)' }, // twoThirdLeft
   'O': { href: '#suit', x: '244', y: '300', transform: 'rotate(180, 290, 346)' }, // twoThirdRight
   'K': { href: '#suit', x: '168', y: '330', transform: 'rotate(180, 214, 376)' }, // threeQuarterCenter
   'Q': { href: '#suit', x: '168', y: '360', transform: 'rotate(180, 214, 406)' }, // fiveSixthCenter
-  'F': { href: '#suit', x: '92',  y: '420', transform: 'rotate(180, 138, 466)' }, // bottomLeft
+  'F': { href: '#suit', x: '92', y: '420', transform: 'rotate(180, 138, 466)' }, // bottomLeft
   'C': { href: '#suit', x: '168', y: '420', transform: 'rotate(180, 214, 466)' }, // bottomCenter
   'G': { href: '#suit', x: '244', y: '420', transform: 'rotate(180, 290, 466)' }, // bottomRight
   'U': { href: '#suit', x: '356', y: '400', width: '60', height: '60', transform: 'rotate(180, 386, 430)' }, // bottomRightSuit
@@ -31,7 +31,7 @@ var positions = {
 function makeSvg(rank, suit) {
   var rankref = 'r' + ranks[rank].id;
   var suitref = 's' + suits[suit].id;
-  
+
   var svg = createSVGElement('svg', {
     attributes: {
       xmlns: 'http://www.w3.org/2000/svg',
@@ -86,8 +86,8 @@ function makeSvg(rank, suit) {
       'stroke-width': '4'
     }
   });
-  
-  if(['J', 'Q', 'K'].indexOf(ranks[rank].id) > -1) {
+
+  if (['J', 'Q', 'K'].indexOf(ranks[rank].id) > -1) {
     createSVGElement('rect', { // face card border
       parent: svg,
       attributes: {
@@ -116,7 +116,7 @@ function makeSvg(rank, suit) {
     }
     // efficient would be make all the defs in a hidden svg
     // then just use them
-    
+
     createSVGElement('use', {
       parent: svg,
       attributes: temp
@@ -131,11 +131,11 @@ function Card(rank, suit) {
   this.suit = suit;
   this.color = suits[suit].color;
   this.svg = makeSvg(rank, suit);
-  
+
   this.log = function() {
     return this.rank + this.suit;
   };
-  
+
   this.render = function() {
     return this.svg;
   };

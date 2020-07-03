@@ -1,6 +1,5 @@
-
 import Deck from './Deck.js';
-import {createElement} from './element.js';
+import { createElement } from './element.js';
 import gps from './gps.js';
 import Card from './Card.js';
 import move from './move.js';
@@ -9,9 +8,28 @@ export var thegame = null;
 
 function Game(number) {
   this.board = {
-    cells: [[], [], [], []],
-    stacks: [[], [], [], []],
-    columns: [[], [], [], [], [], [], [], []]
+    cells: [
+      [],
+      [],
+      [],
+      []
+    ],
+    stacks: [
+      [],
+      [],
+      [],
+      []
+    ],
+    columns: [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
   };
 
   document.getElementById('board').innerHTML = '';
@@ -23,7 +41,7 @@ function Game(number) {
     var card = this.deck.cards[i];
     this.board.columns[i % 8].push(card);
   }
-  
+
   //render
   for (var region in this.board) {
     for (var zone in this.board[region]) {
@@ -40,7 +58,7 @@ function Game(number) {
           zone: parseInt(zone)
         })
       });
-      
+
       elem.addEventListener('click', function() {
         move.select({
           region: this.getAttribute('data-region'),
@@ -62,7 +80,7 @@ function Game(number) {
           zone: parseInt(zone),
           number: parseInt(address)
         });
-        
+
         // should change ranks suits back to array in Card then
         var div = new Card(thecard.rank, thecard.suit).render();
         div.style.top = position.top;

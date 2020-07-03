@@ -1,10 +1,10 @@
 export function createSVGElement(type, data) {
   var element = document.createElementNS("http://www.w3.org/2000/svg", type);
   if (data) {
-    if(data.parent) {
+    if (data.parent) {
       data.parent.appendChild(element);
     }
-    if(data.content) {
+    if (data.content) {
       element.innerHTML = data.content;
     }
     for (var key in data.attributes) {
@@ -17,13 +17,13 @@ export function createSVGElement(type, data) {
 export function createElement(type, data) {
   var element = document.createElement(type);
   if (data) {
-    if(data.parent) {
+    if (data.parent) {
       data.parent.appendChild(element);
     }
-    if(data.content) {
+    if (data.content) {
       element.innerHTML = data.content;
     }
-    if(data.class) {
+    if (data.class) {
       element.classList.add(data.class);
     }
     for (var attr in data.attributes) {

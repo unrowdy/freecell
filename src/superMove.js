@@ -1,5 +1,4 @@
-
-import {thegame} from './Game.js';
+import { thegame } from './Game.js';
 
 export default function superMove(source, target) { // test with #28269
   var targetType = target.region;
@@ -9,15 +8,14 @@ export default function superMove(source, target) { // test with #28269
   var i = sourceArr.length - 1;
   var msg = 'invalid move';
 
-
   if (targetType === 'stacks') {
     var suit, rank;
     if (targetArr.length === 0) {
       suit = sourceArr[i].suit;
       rank = -1;
     } else {
-      suit = targetArr[targetArr.length -1].suit;
-      rank = targetArr[targetArr.length -1].rank;
+      suit = targetArr[targetArr.length - 1].suit;
+      rank = targetArr[targetArr.length - 1].rank;
     }
     if (sourceArr[i].rank === rank + 1 && sourceArr[i].suit === suit) {
       //move sourceArr[i]
@@ -35,20 +33,19 @@ export default function superMove(source, target) { // test with #28269
     var move = sourceArr.length - i;
     var lastCard = null;
 
-    while(sourceArr[i]
-      && (!lastCard
-        || (sourceArr[i].rank === lastCard.rank + 1
-          && sourceArr[i].color !== lastCard.color
+    while (sourceArr[i] &&
+      (!lastCard ||
+        (sourceArr[i].rank === lastCard.rank + 1 &&
+          sourceArr[i].color !== lastCard.color
         )
       )
-      
     ) {
       lastCard = sourceArr[i];
       move = sourceArr.length - i;
-      
-      if (targetArr.length
-        && targetArr[targetArr.length -1].rank === sourceArr[i].rank + 1
-        && targetArr[targetArr.length -1].color !== sourceArr[i].color) {
+
+      if (targetArr.length &&
+        targetArr[targetArr.length - 1].rank === sourceArr[i].rank + 1 &&
+        targetArr[targetArr.length - 1].color !== sourceArr[i].color) {
         //move
         msg = 'valid column move ' + move;
         break;
@@ -59,7 +56,7 @@ export default function superMove(source, target) { // test with #28269
 
       i--;
     }
-    
+
     if (targetArr.length === 0) {
       //move
       msg = 'valid empty move ' + move;
@@ -81,7 +78,7 @@ function getFree() {
       emptyCells += 1;
     }
   }
-  
+
   // you need to not count the one you are moving too though
 
   for (var j = 0; j < thegame.board.columns.length; j++) {

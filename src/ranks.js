@@ -1,6 +1,3 @@
-
-
-
 var ranks = [{
   id: 'A',
   positions: ['A', 'R', 'S', 'T', 'U'],
