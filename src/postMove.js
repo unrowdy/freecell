@@ -8,25 +8,25 @@ function findNext(current) { // test with #4061 or #6095
   var safe = 0;
   
   for (var i = 0; i < thegame.board.cells.length; i++) {
-    var c = thegame.board.cells[i];
-    if (c.length) {
-      if (!current && c[c.length - 1].rank === 0) {
+    var f = thegame.board.cells[i];
+    if (f.length) {
+      if (!current && f[f.length - 1].rank === 0) {
         found = {
           region: 'cells',
           zone: i,
-          id: c[c.length - 1].id
+          id: f[f.length - 1].id
         };
         break;
-      } else if (current && c[c.length - 1].rank === current.rank + 1 && c[c.length - 1].suit === current.suit) {
+      } else if (current && f[f.length - 1].rank === current.rank + 1 && f[f.length - 1].suit === current.suit) {
         found = {
           region: 'cells',
           zone: i,
-          id: c[c.length - 1].id
+          id: f[f.length - 1].id
         };
         break;
       }
     }
-  };
+  }
   
   for (var j = 0; j < thegame.board.columns.length; j++) {
     var c = thegame.board.columns[j];
@@ -47,7 +47,7 @@ function findNext(current) { // test with #4061 or #6095
         break;
       }
     }
-  };
+  }
   
   if (!current || current.rank === 0) {
     safe = 2;
@@ -71,11 +71,11 @@ export default function postMove() {
     var stack = thegame.board.stacks[i];
     var res = findNext(stack[stack.length - 1] || null);
     if (res.found && res.safe) {
-      localMove(res.found, {region: 'stacks', zone: i})
+      localMove(res.found, {region: 'stacks', zone: i});
       done = false;
       break;
     }
-  };
+  }
   if(!done) {
     postMove();
   } else {

@@ -6,18 +6,18 @@ export default function superMove(source, target) { // test with #28269
   var targetArr = thegame.board[target.region][target.zone];
   var sourceArr = thegame.board[source.region][source.zone];
 
-  var i = sourceArr.length - 1
-  var msg = 'invalid move'
+  var i = sourceArr.length - 1;
+  var msg = 'invalid move';
 
 
   if (targetType === 'stacks') {
     var suit, rank;
     if (targetArr.length === 0) {
-      suit = sourceArr[i].suit
-      rank = -1
+      suit = sourceArr[i].suit;
+      rank = -1;
     } else {
-      suit = targetArr[targetArr.length -1].suit
-      rank = targetArr[targetArr.length -1].rank
+      suit = targetArr[targetArr.length -1].suit;
+      rank = targetArr[targetArr.length -1].rank;
     }
     if (sourceArr[i].rank === rank + 1 && sourceArr[i].suit === suit) {
       //move sourceArr[i]
@@ -84,8 +84,8 @@ function getFree() {
   
   // you need to not count the one you are moving too though
 
-  for (var i = 0; i < thegame.board.columns.length; i++) {
-    if (thegame.board.columns[i].length === 0) {
+  for (var j = 0; j < thegame.board.columns.length; j++) {
+    if (thegame.board.columns[j].length === 0) {
       emptyColumns += 1;
     }
   }

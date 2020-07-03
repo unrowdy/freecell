@@ -24,7 +24,7 @@ function Deck() {
       this.cards.splice(i - 1, 1, selected[0]);
     }
     this.cards.reverse();
-  }
+  };
 }
 
 export default Deck;

@@ -26,11 +26,11 @@ export function createElement(type, data) {
     if(data.class) {
       element.classList.add(data.class);
     }
-    for (var key in data.attributes) {
-      element.setAttribute(key, data.attributes[key]);
+    for (var attr in data.attributes) {
+      element.setAttribute(attr, data.attributes[attr]);
     }
-    for (var key in data.styles) {
-      element.style[key] = data.styles[key];
+    for (var prop in data.styles) {
+      element.style[prop] = data.styles[prop];
     }
   }
   return element;

@@ -41,7 +41,7 @@ function gps(address) {
     top: y + 'px',
     left: x + 'px',
     zIndex: z
-  }
+  };
 }
 
 export default gps;

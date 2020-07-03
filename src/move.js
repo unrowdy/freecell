@@ -110,6 +110,6 @@ var move = {
       }
     }
   }
-}
+};
 
 export default move;

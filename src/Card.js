@@ -109,10 +109,10 @@ function makeSvg(rank, suit) {
     // or don't use defs
     var temp = JSON.parse(JSON.stringify(positions[position]));
     if (temp.href === '#rank') {
-      temp.href = '#' + rankref
+      temp.href = '#' + rankref;
     }
     if (temp.href === '#suit') {
-      temp.href = '#' + suitref
+      temp.href = '#' + suitref;
     }
     // efficient would be make all the defs in a hidden svg
     // then just use them
@@ -134,11 +134,11 @@ function Card(rank, suit) {
   
   this.log = function() {
     return this.rank + this.suit;
-  }
+  };
   
   this.render = function() {
     return this.svg;
-  }
+  };
 }
 
 // need to cleanup defs

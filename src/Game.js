@@ -55,12 +55,12 @@ function Game(number) {
         });
       });
 
-      for (var number in this.board[region][zone]) {
-        var thecard = this.board[region][zone][number];
+      for (var address in this.board[region][zone]) {
+        var thecard = this.board[region][zone][address];
         var position = gps({
           region: region,
           zone: parseInt(zone),
-          number: parseInt(number)
+          number: parseInt(address)
         });
         
         // should change ranks suits back to array in Card then
