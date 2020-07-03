@@ -6,7 +6,7 @@
 
 # to do
 
-* add test board
+* add variable speed when testing
 * fix postmove issue
 * finish supermove
 * local storage

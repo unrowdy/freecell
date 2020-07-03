@@ -3,43 +3,49 @@ import { createElement } from './element.js';
 import gps from './gps.js';
 import Card from './Card.js';
 import move from './move.js';
+import test from './test.js';
 
 export var thegame = null;
 
 function Game(number) {
-  this.board = {
-    cells: [
-      [],
-      [],
-      [],
-      []
-    ],
-    stacks: [
-      [],
-      [],
-      [],
-      []
-    ],
-    columns: [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      []
-    ]
-  };
-
   document.getElementById('board').innerHTML = '';
-  this.deck = new Deck();
-  this.deck.shuffle(number);
 
-  //deal
-  for (var i = 0; i < this.deck.cards.length; i++) {
-    var card = this.deck.cards[i];
-    this.board.columns[i % 8].push(card);
+  if (number === 'test') {
+    this.board = test.board;
+  } else {
+    this.board = {
+      cells: [
+        [],
+        [],
+        [],
+        []
+      ],
+      stacks: [
+        [],
+        [],
+        [],
+        []
+      ],
+      columns: [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    };
+
+    this.deck = new Deck();
+    this.deck.shuffle(number);
+
+    //deal
+    for (var i = 0; i < this.deck.cards.length; i++) {
+      var card = this.deck.cards[i];
+      this.board.columns[i % 8].push(card);
+    }
   }
 
   //render

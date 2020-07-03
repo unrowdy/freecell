@@ -5,6 +5,9 @@ function getHash() {
 
   if (location.hash) {
     var temp = location.hash.replace('#', '');
+    if (temp === 'test') {
+      hash = temp;
+    }
     temp = parseInt(temp);
     if (!isNaN(temp)) {
       hash = temp;
