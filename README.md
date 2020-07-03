@@ -6,6 +6,12 @@
 
 # to do
 
-* local storage
+* add test board
+* fix postmove issue
 * finish supermove
-* cleanup
+* local storage
+* circular dependencies
+* refactor
+* win screen
+* don't reset on bad move
+* right click to reveal
