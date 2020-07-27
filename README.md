@@ -15,3 +15,4 @@
 * win screen
 * don't reset on bad move
 * right click to reveal
+* put html in dist, remove rollup-copy
