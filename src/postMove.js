@@ -6,9 +6,15 @@ function findNext(current) { // test with #4061 or #6095
   var found = null;
   var safe = 0;
 
+  // this in run for each final stack
+  // find if the next needed card is available
+  // then check if it is safe to move from the board
+
+  // check the holding cells
   for (var i = 0; i < thegame.board.cells.length; i++) {
     var f = thegame.board.cells[i];
     if (f.length) {
+      // ace for empty stack
       if (!current && f[f.length - 1].rank === 0) {
         found = {
           region: 'cells',
@@ -16,6 +22,7 @@ function findNext(current) { // test with #4061 or #6095
           id: f[f.length - 1].id
         };
         break;
+      // next in suit for current stack
       } else if (current && f[f.length - 1].rank === current.rank + 1 && f[f.length - 1].suit === current.suit) {
         found = {
           region: 'cells',
@@ -27,9 +34,11 @@ function findNext(current) { // test with #4061 or #6095
     }
   }
 
+  // check the columns
   for (var j = 0; j < thegame.board.columns.length; j++) {
     var c = thegame.board.columns[j];
     if (c.length) {
+      // ace for empty stack
       if (!current && c[c.length - 1].rank === 0) {
         found = {
           region: 'columns',
@@ -37,6 +46,7 @@ function findNext(current) { // test with #4061 or #6095
           id: c[c.length - 1].id
         };
         break;
+      // next in suit for current stack
       } else if (current && c[c.length - 1].rank === current.rank + 1 && c[c.length - 1].suit === current.suit) {
         found = {
           region: 'columns',
@@ -49,11 +59,14 @@ function findNext(current) { // test with #4061 or #6095
   }
 
   if (!current || current.rank === 0) {
+    // aces and twos can be removed
     safe = 2;
   } else {
+    // if alternate color stacks are up to the current rank, then safe to move the next higher one
+    // e.g. if both red fours are stacked, then ok to stack the next card on a black four
     thegame.board.stacks.forEach(function(s) {
-      if (s.length && s[s.length - 1].rank >= current.rank - 1 && s[s.length - 1].color !== current.color) {
-        safe += 1;
+      if (s.length && s[s.length - 1].rank >= current.rank && s[s.length - 1].color !== current.color) {
+        safe += 1; // cause you need a total of 2
       }
     });
   }
