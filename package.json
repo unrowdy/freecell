@@ -1,10 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "lint": "jshint src/",
-    "clean": "js-beautify -r src/*.js",
+    "lint": "jshint src/js/",
+    "clean": "js-beautify -r src/js/*.js",
     "build": "rollup -c",
-    "serve": "http-server dist"
+    "mock": "npm run build && http-server dist -c-1 -o",
+    "local": "http-server src -c-1 -o"
   },
   "devDependencies": {
     "http-server": "^0.12.3",

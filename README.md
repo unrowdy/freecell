@@ -2,7 +2,9 @@
 
 `npm install`
 
-`npm run build` then `npm run serve` locally
+`npm run local` to serve directly as modules from `src/`
+
+`npm run mock` to build and serve `dist/`
 
 Can also `npm run lint` and `npm run clean` (to prettify)
 

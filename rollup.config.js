@@ -2,17 +2,25 @@
 import copy from 'rollup-plugin-copy';
 
 export default {
-  input: 'src/hash.js',
+  input: 'src/js/hash.js',
   output: {
     file: 'dist/bundle.js',
     format: 'cjs'
   },
   plugins: [
     copy({
-      targets: [
-        { src: 'index.html', dest: 'dist' },
-        { src: 'default.css', dest: 'dist' }
-      ]
+      targets: [{
+        src: 'src/css/*',
+        dest: 'dist'
+      }, {
+        src: 'src/*.html',
+        dest: 'dist',
+        transform: (contents) => {
+          return contents.toString()
+          .replace(/css\//g, '')
+          .replace('type="module" src="js/hash.js"', 'src="bundle.js"');
+        }
+      }]
     })
   ]
 };
