@@ -1,3 +1,5 @@
+import { thegame } from './Game.js';
+
 export var queue = [];
 var delay = 0;
 var timer = new Date();
@@ -23,6 +25,20 @@ export function process() {
 
   if (queue.length > 0) {
     window.requestAnimationFrame(process);
+  } else {
+    // winning
+    // right *time* to check if won, but unfortunate module
+    var remaining = 0;
+    for (var i = 0; i < thegame.board.cells.length; i++) {
+      remaining += thegame.board.cells[i].length;
+    }
+    for (var j = 0; j < thegame.board.columns.length; j++) {
+      remaining += thegame.board.columns[j].length;
+    }
+    if (remaining === 0) {
+      alert('All cards have been stacked. Play again?');
+      location.hash = Math.floor(Math.random() * 32000);
+    }
   }
 }
 
